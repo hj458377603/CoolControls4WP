@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using GalaSoft.MvvmLight.Command;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using WPUC.Resources;
 using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Command;
+using System.Windows;
 
 namespace WPUC
 {

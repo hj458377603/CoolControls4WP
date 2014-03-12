@@ -1,10 +1,7 @@
-﻿using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace WPUC
@@ -50,6 +47,14 @@ namespace WPUC
             set
             {
                 SetValue(IsOpenProperty, value);
+                if (value)
+                {
+                    Open();
+                }
+                else
+                {
+                    Close();
+                }
             }
         }
 
@@ -74,31 +79,11 @@ namespace WPUC
         #region 方法
 
         /// <summary>
-        /// 初始化通知按钮
+        /// 点击...
         /// </summary>
         private void TextBlock_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            Storyboard sb = new Storyboard();
-            DoubleAnimation animation = new DoubleAnimation();
-
-            // 没打开
-            if (!IsOpen)
-            {
-                animation.To = -this.root.ActualHeight + this.MinHeight;
-                IsOpen = true;
-            }
-            else
-            {
-                animation.By = this.root.ActualHeight - this.MinHeight;
-                IsOpen = false;
-            }
-
-            // 动画
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.05));
-            Storyboard.SetTarget(animation, LayoutRoot);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateY)"));
-            sb.Children.Add(animation);
-            sb.Begin();
+            IsOpen = !IsOpen;
         }
 
         /// <summary>
@@ -121,6 +106,39 @@ namespace WPUC
             {
                 this.MinHeight = 70;
             }
+        }
+
+        /// <summary>
+        /// 打开
+        /// </summary>
+        private void Open()
+        {
+            Storyboard sb = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = -this.root.ActualHeight + this.MinHeight;
+            // 动画
+            animation.Duration = new Duration(TimeSpan.FromSeconds(0.05));
+            Storyboard.SetTarget(animation, LayoutRoot);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateY)"));
+            sb.Children.Add(animation);
+            sb.Begin();
+        }
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        private void Close()
+        {
+            Storyboard sb = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.By = this.root.ActualHeight - this.MinHeight;
+
+            // 动画
+            animation.Duration = new Duration(TimeSpan.FromSeconds(0.05));
+            Storyboard.SetTarget(animation, LayoutRoot);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateY)"));
+            sb.Children.Add(animation);
+            sb.Begin();
         }
         #endregion
     }
