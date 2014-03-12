@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="WPUC.WindowsPhoneControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480"
+    VerticalAlignment="Bottom"
+    toolkit:TiltEffect.SuppressTilt="True">
+    <UserControl.Resources>
+        <Style x:Key="AppBarIcoButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="48"></Setter>
+            <Setter Property="Height" Value="48"></Setter>
+            <Setter Property="Margin" Value="12"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBackground" BorderBrush="White" BorderThickness="3"  CornerRadius="50">
+                            <ContentPresenter x:Name="btn" VerticalAlignment="Center" 
+                                                                  HorizontalAlignment="Center"
+                                                                  Content="{TemplateBinding Content}"/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommomStates">
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Red" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Margin">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0 -2 0 2" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="AppBarMenuItemButtonStyle" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Margin" Value="24 -6 24 12"></Setter>
+            <Setter Property="FontWeight" Value="Normal"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBackground" BorderThickness="0">
+                            <ContentPresenter x:Name="btn" Content="{TemplateBinding Content}"/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommomStates">
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Margin">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0 -2 0 2" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}" Loaded="LayoutRoot_Loaded_1">
+        <Grid.RenderTransform>
+            <CompositeTransform />
+        </Grid.RenderTransform>
+        <Popup IsOpen="True">
+            <Grid x:Name="root" Width="480" VerticalAlignment="Bottom"  Background="{StaticResource PhoneChromeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <!--按钮-->
+                <StackPanel Grid.Row="0" 
+                            Grid.ColumnSpan="2" 
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <ListBox x:Name="btnList" ItemsSource="{Binding}" 
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Border BorderBrush="Red" Background="Red" 
+                                            CornerRadius="50" 
+                                            Width="24" 
+                                            Height="24"
+                                            Margin="0 0 -36 -36"
+                                            Canvas.ZIndex="100"
+                                            Visibility="{Binding NotifyTextVisibility}">
+                                        <TextBlock Text="{Binding NotifyText}" TextAlignment="Center"
+                                                   FontSize="16"
+                                                   Foreground="White"/>
+                                    </Border>
+                                    <Button Style="{StaticResource AppBarIcoButtonStyle}"
+                                            Width="48" 
+                                            Height="48"
+                                            Command="{Binding ClickCommand}">
+                                        <Button.Content>
+                                            <Image Source="{Binding ImageUri}"></Image>
+                                        </Button.Content>
+                                    </Button>
+                                    <TextBlock FontSize="12" Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               Text="{Binding Text}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+                <!--...-->
+                <TextBlock  Grid.Row="0" Grid.Column="1"
+                            HorizontalAlignment="Right" 
+                            FontSize="40" 
+                            Text="..." 
+                            Margin="12 -36 12 0"
+                            Padding="12"
+                            Tap="TextBlock_Tap_1"/>
+                <!--MenuItems-->
+                <StackPanel Grid.Row="1" 
+                            Grid.ColumnSpan="2" 
+                            Margin="0 12 0 0">
+                    <ListBox x:Name="menuItemBtnList" ItemsSource="{Binding}" 
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Style="{StaticResource AppBarMenuItemButtonStyle}"
+                                            Content="{Binding Text}"
+                                            Width="480" 
+                                            HorizontalContentAlignment="Left"
+                                            Command="{Binding ClickCommand}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Vertical"></VirtualizingStackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+        </Popup>
+    </Grid>
+</UserControl>
