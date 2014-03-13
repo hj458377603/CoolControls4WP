@@ -15,3 +15,10 @@ CoolControls4WP
 提示文本2位数效果，已经不同的背景色：
 <br />
 <img src="http://images.cnblogs.com/cnblogs_com/fb-boy/520080/o_%e6%8f%90%e7%a4%ba%e6%96%87%e6%9c%ac%e7%9a%84%e4%b8%8d%e5%90%8c%e8%83%8c%e6%99%af%e8%89%b2.PNG"/>
+<br />
+<a href="http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/system.windows.controls.control.focus(v=vs.105).aspx">添加LostFocus事件</a>
+为了能够设置焦点，必须满足以下条件：
+将 Visibility 设置为 Visible。
+IsTabStop 设置为 true。
+IsEnabled 设置为 true。
+必须在树中实例化控件（已引发 Loaded 事件）。
