@@ -10,4 +10,8 @@ CoolControls4WP
 按钮不可点击效果：
 <br />
 <img src="http://images.cnblogs.com/cnblogs_com/fb-boy/520080/o_%e6%8c%89%e9%92%ae%e4%b8%8d%e5%8f%af%e7%82%b9%e5%87%bb%e9%80%8f%e6%98%8e%e5%ba%a6%e6%8e%a7%e5%88%b6.PNG"/>
-
+<br />
+<br />
+提示文本2位数效果，已经不同的背景色：
+<br />
+<img src="http://images.cnblogs.com/cnblogs_com/fb-boy/520080/o_%e6%8f%90%e7%a4%ba%e6%96%87%e6%9c%ac%e7%9a%84%e4%b8%8d%e5%90%8c%e8%83%8c%e6%99%af%e8%89%b2.PNG"/>
