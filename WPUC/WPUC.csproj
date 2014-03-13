@@ -93,20 +93,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyButton.cs" />
+    <Compile Include="Appbar\NotifyButton.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MenuItemButton.cs" />
-    <Compile Include="MyAppBarIcoButton.cs" />
+    <Compile Include="Appbar\MenuItemButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WindowsPhoneControl1.xaml.cs">
+    <Compile Include="Appbar\WindowsPhoneControl1.xaml.cs">
       <DependentUpon>WindowsPhoneControl1.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -119,7 +118,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowsPhoneControl1.xaml">
+    <Page Include="Appbar\WindowsPhoneControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

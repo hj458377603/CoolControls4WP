@@ -3,8 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
 
-namespace WPUC
+namespace WPUC.Appbar
 {
     public class NotifyButton : INotifyPropertyChanged
     {
@@ -30,6 +31,9 @@ namespace WPUC
 
         // 透明度
         private float opacity = 1.0f;
+
+        // 提示文本背景颜色
+        private Brush notifyTextBackground = new SolidColorBrush(Colors.Red);
 
         #endregion
 
@@ -159,6 +163,25 @@ namespace WPUC
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("Opacity"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 提示文本背景颜色
+        /// </summary>
+        public Brush NotifyTextBackgroundColor
+        {
+            get
+            {
+                return notifyTextBackground;
+            }
+            set
+            {
+                notifyTextBackground = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("NotifyTextBackgroundColor"));
                 }
             }
         }

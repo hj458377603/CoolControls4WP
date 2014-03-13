@@ -2,6 +2,8 @@
 using Microsoft.Phone.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Media;
+using WPUC.Appbar;
 
 namespace WPUC
 {
@@ -21,6 +23,7 @@ namespace WPUC
             btn1.NotifyText = "12";
             btn1.Text = "this is btn1";
             btn1.IsEnabled = false;
+            btn1.NotifyTextBackgroundColor = new SolidColorBrush(Colors.Orange);
             btn1.ClickCommand = new RelayCommand(() =>
             {
                 MessageBox.Show("haha,this is btn1");
@@ -28,7 +31,7 @@ namespace WPUC
 
             NotifyButton btn2 = new NotifyButton("/Assets/asc.png");
             btn2.NotifyText = "2";
-            btn2.Text = "this is btn1";
+            btn2.Text = "this is btn2";
             btn2.ClickCommand = new RelayCommand(() =>
             {
                 MessageBox.Show("haha,this is btn2");
@@ -36,7 +39,8 @@ namespace WPUC
 
             NotifyButton btn3 = new NotifyButton("/Assets/asc.png");
             btn3.NotifyText = "88";
-            btn3.Text = "this is btn1";
+            btn3.Text = "this is btn3";
+            btn3.NotifyTextBackgroundColor = new SolidColorBrush(Colors.Green);
             btn3.ClickCommand = new RelayCommand(() =>
             {
                 MessageBox.Show("haha,this is btn3");

@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace WPUC
+namespace WPUC.Appbar
 {
     public partial class WindowsPhoneControl1 : UserControl
     {

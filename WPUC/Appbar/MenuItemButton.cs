@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPUC
+namespace WPUC.Appbar
 {
     public class MenuItemButton : INotifyPropertyChanged
     {
