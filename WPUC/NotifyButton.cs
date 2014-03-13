@@ -22,7 +22,14 @@ namespace WPUC
         // 按钮文本
         private string text;
 
-        private ICommand command;
+        // 点击命令
+        private ICommand clickCommand;
+
+        // 是否可以使用
+        private bool isEnabled = true;
+
+        // 透明度
+        private float opacity = 1.0f;
 
         #endregion
 
@@ -114,6 +121,47 @@ namespace WPUC
             }
         }
 
+        /// <summary>
+        /// 是否可以使用
+        /// </summary>
+        public bool IsEnabled
+        {
+            get
+            {
+                return isEnabled;
+            }
+            set
+            {
+                isEnabled = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsEnabled"));
+                }
+                if (value == false)
+                {
+                    Opacity = 0.3f;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 透明度
+        /// </summary>
+        public float Opacity
+        {
+            get
+            {
+                return opacity;
+            }
+            private set
+            {
+                opacity = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Opacity"));
+                }
+            }
+        }
         #endregion
 
         #region 事件
@@ -128,11 +176,11 @@ namespace WPUC
         {
             get
             {
-                return command;
+                return clickCommand;
             }
             set
             {
-                command = value;
+                clickCommand = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("ClickCommand"));

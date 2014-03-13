@@ -11,11 +11,16 @@ namespace WPUC
         public MainPage()
         {
             InitializeComponent();
+            InitNotifyAppbar();
+        }
 
+        private void InitNotifyAppbar()
+        {
             var btns = new ObservableCollection<NotifyButton>();
             NotifyButton btn1 = new NotifyButton("/Assets/asc.png");
             btn1.NotifyText = "1";
             btn1.Text = "this is btn1";
+            btn1.IsEnabled = false;
             btn1.ClickCommand = new RelayCommand(() =>
             {
                 MessageBox.Show("haha,this is btn1");
@@ -52,6 +57,7 @@ namespace WPUC
 
             MenuItemButton menuItembtn2 = new MenuItemButton();
             menuItembtn2.Text = "menuItembtn2";
+            menuItembtn2.IsEnabled = false;
             menuItembtn2.ClickCommand = new RelayCommand(() =>
             {
                 MessageBox.Show("haha,this is menuItembtn2");

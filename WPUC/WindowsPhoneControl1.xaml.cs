@@ -9,7 +9,7 @@ namespace WPUC
     public partial class WindowsPhoneControl1 : UserControl
     {
         #region 字段
-        private Storyboard sb;
+
         #endregion
 
         #region 属性
@@ -22,9 +22,6 @@ namespace WPUC
 
         public static readonly DependencyProperty NotifyButtonListProperty =
             DependencyProperty.Register("NotifyButtonList", typeof(ObservableCollection<NotifyButton>), typeof(WindowsPhoneControl1), new PropertyMetadata(null));
-
-
-
 
         public ObservableCollection<MenuItemButton> MenuItemButtonList
         {
@@ -134,7 +131,7 @@ namespace WPUC
             animation.By = this.root.ActualHeight - this.MinHeight;
 
             // 动画
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.05));
+            animation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
             Storyboard.SetTarget(animation, LayoutRoot);
             Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateY)"));
             sb.Children.Add(animation);

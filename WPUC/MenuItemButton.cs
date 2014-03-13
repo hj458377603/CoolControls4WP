@@ -15,11 +15,16 @@ namespace WPUC
         // 按钮文本
         private string text;
 
-        private ICommand command;
+        // 点击命令
+        private ICommand clickCommand;
+
+        // 是否允许使用
+        private bool isEnabled = true;
 
         #endregion
 
         #region 属性
+
         /// <summary>
         /// 按钮文本
         /// </summary>
@@ -39,6 +44,25 @@ namespace WPUC
             }
         }
 
+        /// <summary>
+        /// 是否允许使用
+        /// </summary>
+        public bool IsEnabled
+        {
+            get
+            {
+                return isEnabled;
+            }
+            set
+            {
+                isEnabled = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsEnabled"));
+                }
+            }
+        }
+
         #endregion
 
         #region 事件
@@ -53,11 +77,11 @@ namespace WPUC
         {
             get
             {
-                return command;
+                return clickCommand;
             }
             set
             {
-                command = value;
+                clickCommand = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("ClickCommand"));
