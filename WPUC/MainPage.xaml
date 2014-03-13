@@ -36,4 +36,27 @@
                                  NotifyButtonList="{Binding}"
                                  MenuItemButtonList="{Binding}"></uc:WindowsPhoneControl1>
     </Grid>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/asc.png" 
+                Text="good"
+                IsEnabled="False">
+            </shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/desc.png" 
+                Text="good">
+            </shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/asc.png" 
+                Text="good">
+            </shell:ApplicationBarIconButton>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="aa">
+                </shell:ApplicationBarMenuItem>
+                <shell:ApplicationBarMenuItem Text="bb">
+                </shell:ApplicationBarMenuItem>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
 </phone:PhoneApplicationPage>

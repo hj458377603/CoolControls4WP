@@ -18,7 +18,7 @@ namespace WPUC
         {
             var btns = new ObservableCollection<NotifyButton>();
             NotifyButton btn1 = new NotifyButton("/Assets/asc.png");
-            btn1.NotifyText = "1";
+            btn1.NotifyText = "12";
             btn1.Text = "this is btn1";
             btn1.IsEnabled = false;
             btn1.ClickCommand = new RelayCommand(() =>
@@ -35,7 +35,7 @@ namespace WPUC
             });
 
             NotifyButton btn3 = new NotifyButton("/Assets/asc.png");
-            btn3.NotifyText = "3";
+            btn3.NotifyText = "88";
             btn3.Text = "this is btn1";
             btn3.ClickCommand = new RelayCommand(() =>
             {

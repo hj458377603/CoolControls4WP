@@ -32,6 +32,15 @@ namespace WPUC
         public static readonly DependencyProperty MenuItemButtonListProperty =
             DependencyProperty.Register("MenuItemButtonList", typeof(ObservableCollection<MenuItemButton>), typeof(WindowsPhoneControl1), new PropertyMetadata(null));
 
+        public bool IsMenuEnabled
+        {
+            get { return (bool)GetValue(IsMenuEnabledProperty); }
+            set { SetValue(IsMenuEnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsMenuEnabledProperty =
+            DependencyProperty.Register("IsMenuEnabled", typeof(bool), typeof(WindowsPhoneControl1), new PropertyMetadata(true));
+
         /// <summary>
         /// appbar是否展开
         /// </summary>
@@ -112,7 +121,20 @@ namespace WPUC
         {
             Storyboard sb = new Storyboard();
             DoubleAnimation animation = new DoubleAnimation();
-            animation.To = -this.root.ActualHeight + this.MinHeight;
+            animation.By = -this.root.ActualHeight + this.MinHeight;
+
+            if (!IsMenuEnabled)
+            {
+                if (NotifyButtonList == null || NotifyButtonList.Count == 0)
+                {
+                    animation.By = -5;
+                }
+                else
+                {
+                    animation.By = -25;
+                }
+            }
+
             // 动画
             animation.Duration = new Duration(TimeSpan.FromSeconds(0.05));
             Storyboard.SetTarget(animation, LayoutRoot);
@@ -129,7 +151,17 @@ namespace WPUC
             Storyboard sb = new Storyboard();
             DoubleAnimation animation = new DoubleAnimation();
             animation.By = this.root.ActualHeight - this.MinHeight;
-
+            if (!IsMenuEnabled)
+            {
+                if (NotifyButtonList == null || NotifyButtonList.Count == 0)
+                {
+                    animation.By = 5;
+                }
+                else
+                {
+                    animation.By = 25;
+                }
+            }
             // 动画
             animation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
             Storyboard.SetTarget(animation, LayoutRoot);
