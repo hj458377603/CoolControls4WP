@@ -6,7 +6,7 @@ using System.Windows.Media.Animation;
 
 namespace WPUC.Appbar
 {
-    public partial class WindowsPhoneControl1 : UserControl
+    public partial class NotifyApplicationBar : UserControl
     {
         #region 字段
 
@@ -21,7 +21,7 @@ namespace WPUC.Appbar
         }
 
         public static readonly DependencyProperty NotifyButtonListProperty =
-            DependencyProperty.Register("NotifyButtonList", typeof(ObservableCollection<NotifyButton>), typeof(WindowsPhoneControl1), new PropertyMetadata(null));
+            DependencyProperty.Register("NotifyButtonList", typeof(ObservableCollection<NotifyButton>), typeof(NotifyApplicationBar), new PropertyMetadata(null));
 
         public ObservableCollection<MenuItemButton> MenuItemButtonList
         {
@@ -30,7 +30,7 @@ namespace WPUC.Appbar
         }
 
         public static readonly DependencyProperty MenuItemButtonListProperty =
-            DependencyProperty.Register("MenuItemButtonList", typeof(ObservableCollection<MenuItemButton>), typeof(WindowsPhoneControl1), new PropertyMetadata(null));
+            DependencyProperty.Register("MenuItemButtonList", typeof(ObservableCollection<MenuItemButton>), typeof(NotifyApplicationBar), new PropertyMetadata(null));
 
         public bool IsMenuEnabled
         {
@@ -39,7 +39,7 @@ namespace WPUC.Appbar
         }
 
         public static readonly DependencyProperty IsMenuEnabledProperty =
-            DependencyProperty.Register("IsMenuEnabled", typeof(bool), typeof(WindowsPhoneControl1), new PropertyMetadata(true));
+            DependencyProperty.Register("IsMenuEnabled", typeof(bool), typeof(NotifyApplicationBar), new PropertyMetadata(true));
 
         /// <summary>
         /// appbar是否展开
@@ -65,13 +65,13 @@ namespace WPUC.Appbar
         }
 
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(WindowsPhoneControl1), new PropertyMetadata(false));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(NotifyApplicationBar), new PropertyMetadata(false));
 
         #endregion
 
         #region 构造方法
 
-        public WindowsPhoneControl1()
+        public NotifyApplicationBar()
         {
             InitializeComponent();
         }
@@ -136,11 +136,27 @@ namespace WPUC.Appbar
             }
 
             // 动画
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.05));
+            animation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
             Storyboard.SetTarget(animation, LayoutRoot);
             Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateY)"));
             sb.Children.Add(animation);
             sb.Begin();
+
+            // 尝试获取焦点
+            bool isFocused = this.Focus();
+            if (isFocused)
+            {
+                this.LostFocus += NotifyApplicationBar_LostFocus;
+            }
+        }
+
+        void NotifyApplicationBar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (IsOpen)
+            {
+                IsOpen = false;
+            }
+            this.LostFocus -= NotifyApplicationBar_LostFocus;
         }
 
         /// <summary>

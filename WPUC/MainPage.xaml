@@ -31,13 +31,13 @@
 
         </Grid>
 
-        <uc:WindowsPhoneControl1 x:Name="appbar" 
+        <uc:NotifyApplicationBar x:Name="appbar" 
                                  Grid.Row="1" 
                                  NotifyButtonList="{Binding}"
-                                 MenuItemButtonList="{Binding}"></uc:WindowsPhoneControl1>
+                                 MenuItemButtonList="{Binding}"></uc:NotifyApplicationBar>
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsMenuEnabled="False">
+        <shell:ApplicationBar>
             <shell:ApplicationBarIconButton 
                 IconUri="/Assets/asc.png" 
                 Text="good"
@@ -45,7 +45,7 @@
             </shell:ApplicationBarIconButton>
             <shell:ApplicationBarIconButton 
                 IconUri="/Assets/desc.png" 
-                Text="good">
+                Text="good" Click="ApplicationBarIconButton_Click_1">
             </shell:ApplicationBarIconButton>
             <shell:ApplicationBarIconButton 
                 IconUri="/Assets/asc.png" 

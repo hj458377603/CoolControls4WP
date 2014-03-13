@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPUC.Appbar.WindowsPhoneControl1"
+﻿<UserControl x:Class="WPUC.Appbar.NotifyApplicationBar"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,9 +11,56 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480"
     VerticalAlignment="Bottom"
-    toolkit:TiltEffect.SuppressTilt="True">
+    toolkit:TiltEffect.SuppressTilt="True"
+    IsTabStop="True"
+    IsEnabled="True"
+    Visibility="Visible">
 
     <UserControl.Resources>
+        <Style x:Key="AppBarIcoNotifyButtonStyle" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBackground" BorderThickness="0">
+                            <ContentPresenter x:Name="btn" Content="{TemplateBinding Content}"/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommomStates">
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames 
+                                                    Storyboard.TargetName="ButtonBackground" 
+                                                    Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="AppBarIcoButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="48"></Setter>
             <Setter Property="Height" Value="48"></Setter>
@@ -149,30 +196,37 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Border BorderBrush="Red" Background="{Binding NotifyTextBackgroundColor}" 
-                                            CornerRadius="50" 
-                                            Width="24" 
-                                            Height="24"
-                                            Margin="0 0 -36 -36"
-                                            Canvas.ZIndex="100"
-                                            Visibility="{Binding NotifyTextVisibility}">
-                                        <TextBlock Text="{Binding NotifyText}" TextAlignment="Center"
-                                                   FontSize="16"
-                                                   Foreground="White"/>
-                                    </Border>
-                                    <Button Style="{StaticResource AppBarIcoButtonStyle}"
-                                            Width="48" 
-                                            Height="48"
-                                            IsEnabled="{Binding IsEnabled}"
+                                    <Button Style="{StaticResource AppBarIcoNotifyButtonStyle}"
                                             Command="{Binding ClickCommand}">
-                                        <Button.Content>
-                                            <Image Source="{Binding ImageUri}"></Image>
-                                        </Button.Content>
+                                        <StackPanel>
+                                            <Border BorderBrush="Red" Background="{Binding NotifyTextBackgroundColor}" 
+                                                    CornerRadius="50" 
+                                                    Width="24" 
+                                                    Height="24"
+                                                    Margin="0 0 -36 -36"
+                                                    Canvas.ZIndex="100"
+                                                    Visibility="{Binding NotifyTextVisibility}">
+                                                <TextBlock Text="{Binding NotifyText}" 
+                                                           TextAlignment="Center"
+                                                           FontSize="16"
+                                                           Foreground="White"/>
+                                            </Border>
+                                            <Button Style="{StaticResource AppBarIcoButtonStyle}"
+                                                    Width="48" 
+                                                    Height="48"
+                                                    Command="{Binding ClickCommand}"
+                                                    IsEnabled="{Binding IsEnabled}">
+                                                <Button.Content>
+                                                    <Image Source="{Binding ImageUri}"></Image>
+                                                </Button.Content>
+                                            </Button>
+                                            <TextBlock FontSize="12" 
+                                                       Foreground="White"
+                                                       HorizontalAlignment="Center"
+                                                       Text="{Binding Text}"
+                                                       Opacity="{Binding Opacity}"/>
+                                        </StackPanel>
                                     </Button>
-                                    <TextBlock FontSize="12" Foreground="White"
-                                               HorizontalAlignment="Center"
-                                               Text="{Binding Text}"
-                                               Opacity="{Binding Opacity}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

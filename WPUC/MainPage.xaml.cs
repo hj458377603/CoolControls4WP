@@ -16,6 +16,11 @@ namespace WPUC
             InitNotifyAppbar();
         }
 
+        //private void ApplicationBarIconButton_Click_1(object sender, System.EventArgs e)
+        //{
+        //    MessageBox.Show("fa");
+        //}
+
         private void InitNotifyAppbar()
         {
             var btns = new ObservableCollection<NotifyButton>();
