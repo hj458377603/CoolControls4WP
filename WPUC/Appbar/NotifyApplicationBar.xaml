@@ -197,7 +197,8 @@
                             <DataTemplate>
                                 <StackPanel>
                                     <Button Style="{StaticResource AppBarIcoNotifyButtonStyle}"
-                                            Command="{Binding ClickCommand}">
+                                            Command="{Binding ClickCommand}"
+                                            IsEnabled="{Binding IsEnabled}">
                                         <StackPanel>
                                             <Border BorderBrush="Red" Background="{Binding NotifyTextBackgroundColor}" 
                                                     CornerRadius="50" 
@@ -214,8 +215,7 @@
                                             <Button Style="{StaticResource AppBarIcoButtonStyle}"
                                                     Width="48" 
                                                     Height="48"
-                                                    Command="{Binding ClickCommand}"
-                                                    IsEnabled="{Binding IsEnabled}">
+                                                    Command="{Binding ClickCommand}">
                                                 <Button.Content>
                                                     <Image Source="{Binding ImageUri}"></Image>
                                                 </Button.Content>
