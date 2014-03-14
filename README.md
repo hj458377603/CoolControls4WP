@@ -1,4 +1,4 @@
-CoolControls4WP
+﻿CoolControls4WP
 ===============
 1.实现按钮右上角带有提示功能的Appbar。
 
@@ -21,4 +21,4 @@ CoolControls4WP
 将 Visibility 设置为 Visible。<br />
 IsTabStop 设置为 true。<br />
 IsEnabled 设置为 true。<br />
-必须在树中实例化控件（已引发 Loaded 事件）。<br />
+必须在树中实例化控件（已引发 Loaded 事件）。<br />骚哥加入...
